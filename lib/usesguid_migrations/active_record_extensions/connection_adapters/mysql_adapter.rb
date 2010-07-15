@@ -8,7 +8,7 @@ module UsesguidMigrations::ActiveRecordExtensions::ConnectionAdapters
 
       results.each do |row|
         row[1].each do |line|
-          keys << $1 if line =~ /^  [`"](.+?)[`"] varchar\(22\) character set latin1 collate latin1_bin NOT NULL?,?$/
+          keys << $1 if line =~ (/^  [`"](.+?)[`"] varchar\(22\) character set latin1 collate latin1_bin NOT NULL?,?$/i)
           primary_key = $1 if line =~ /^  PRIMARY KEY  \([`"](.+?)[`"]\)$/
           primary_key = $1 if line =~ /^  PRIMARY KEY  \([`"](.+?)[`"]\),$/
           primary_key = $1 if line =~ /^  PRIMARY KEY  \([`"](.+?)[`"]\), $/
